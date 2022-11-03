@@ -1,4 +1,4 @@
-import _ from 'lodash';
+// import _ from 'lodash';
 import './style.css';
 
 const listArray = [
@@ -32,19 +32,17 @@ const listArray = [
 const container = document.getElementById('container');
 
 window.addEventListener('DOMContentLoaded', () => {
-
- listArray.forEach((list) => {
-   const li = document.createElement('li');
-   li.innerHTML = `
+  listArray.forEach((list) => {
+    const li = document.createElement('li');
+    li.innerHTML = `
   <div class="form">
    <input type="checkbox" name="list" id="list">
     <p>${list.desc}</p>
     <i class="uil uil-ellipsis-v"></i>
   </div> `;
 
-   container.appendChild(li);
- });
-
+    container.appendChild(li);
+  });
 });
 
 // window.addEventListener('DOMContentLoaded', (e) => {
