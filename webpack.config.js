@@ -6,6 +6,7 @@ module.exports = {
   entry: './src/index.js',
   plugins: [
     new HtmlWebpackPlugin({
+      title: 'Output Management',
       template: './src/index.html',
     }),
   ],
@@ -25,7 +26,7 @@ module.exports = {
       },
     ],
   },
-  // optimization: {
-  //   runtimeChunk: 'single',
-  // },
+  optimization: {
+    runtimeChunk: 'single',
+  },
 };
