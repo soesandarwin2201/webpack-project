@@ -110,13 +110,23 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
+/***/ "./src/add-remove.js":
+/*!***************************!*\
+  !*** ./src/add-remove.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"addList\": () => (/* binding */ addList)\n/* harmony export */ });\nconst addList = (item) => {\r\n const toDoList = {\r\n  id: Date.now().toString(),\r\n  listname : listname,\r\n  des : 'task completed'\r\n };\r\n\r\n return toDoList;\r\n}\n\n//# sourceURL=webpack://webpack-project/./src/add-remove.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n// import _ from 'lodash';\n\n\nconst listArray = [\n  {\n    index: 1,\n    completed: false,\n    desc: 'Task Complete 1',\n  },\n  {\n    index: 2,\n    completed: false,\n    desc: 'Task Complete 2',\n  },\n  {\n    index: 3,\n    completed: false,\n    desc: 'Task Complete 3',\n  },\n  {\n    index: 4,\n    completed: false,\n    desc: 'Task Complete 4',\n  },\n  {\n    index: 5,\n    completed: false,\n    desc: 'Task Complete 5',\n  },\n];\n\nconst container = document.getElementById('container');\n\nwindow.addEventListener('DOMContentLoaded', () => {\n  listArray.forEach((list) => {\n    const li = document.createElement('li');\n    li.innerHTML = `\n  <div class=\"form\">\n   <input type=\"checkbox\" name=\"list\" id=\"list\">\n    <p>${list.desc}</p>\n    <i class=\"uil uil-ellipsis-v\"></i>\n  </div> `;\n\n    container.appendChild(li);\n  });\n});\n\n// window.addEventListener('DOMContentLoaded', (e) => {\n//   console.log('it is loaded');\n// });\n\n\n//# sourceURL=webpack://webpack-project/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _add_remove_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./add-remove.js */ \"./src/add-remove.js\");\n\r\n\r\n\r\nconst listArray = [];\r\n\r\nconst container = document.getElementById('container');\r\nconst form = document.getElementById('form');\r\nconst listInput = document.getElementById('list-input');\r\n\r\n\r\nform.addEventListener('submit', (e) => {\r\n  e.preventDefault();\r\n  const listName = listInput.value;\r\n\r\n  if( listName === null || listName === '') {\r\n    console.log('it is empty');\r\n    return ;\r\n  }\r\n  else {\r\n    const list = createList(listName);\r\n    listInput.value = \" \";\r\n    listArray.push(list);\r\n    render();\r\n    console.log('it is submited')\r\n  }\r\n});\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nconst render = () => {\r\n  listArray.forEach((list) => {\r\n    const li = document.createElement('li');\r\n    li.innerHTML = `\r\n  <div class=\"form\">\r\n   <input type=\"checkbox\" name=\"list\" id=\"list\">\r\n    <p>${list.desc}</p>\r\n    <i class=\"uil uil-ellipsis-v\"></i>\r\n  </div> `;\r\n\r\n    container.appendChild(li);\r\n  });\r\n};\r\n\r\n\r\n\n\n//# sourceURL=webpack://webpack-project/./src/index.js?");
 
 /***/ })
 

@@ -1,50 +1,49 @@
-// import _ from 'lodash';
 import './style.css';
+import { addList } from './add-remove.js';
 
-const listArray = [
-  {
-    index: 1,
-    completed: false,
-    desc: 'Task Complete 1',
-  },
-  {
-    index: 2,
-    completed: false,
-    desc: 'Task Complete 2',
-  },
-  {
-    index: 3,
-    completed: false,
-    desc: 'Task Complete 3',
-  },
-  {
-    index: 4,
-    completed: false,
-    desc: 'Task Complete 4',
-  },
-  {
-    index: 5,
-    completed: false,
-    desc: 'Task Complete 5',
-  },
-];
+const LOCAL_STORAGE = 'task.listArray';
+const listArray = JSON.parse(localStorage.getItem(LOCAL_STORAGE)) || [] ;
+
+
 
 const container = document.getElementById('container');
+const form = document.getElementById('form');
+const listInput = document.getElementById('list-input');
 
-window.addEventListener('DOMContentLoaded', () => {
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const listName = listInput.value;
+
+  if( listName === null || listName === '') {
+    console.log('it is empty');
+    return undefined;
+  }
+  else {
+    const list = addList(listName);
+    listArray.push(list);
+    render();
+    listInput.value = null;
+    console.log(listArray);
+  }
+  localStorage.setItem(LOCAL_STORAGE, JSON.stringify(listArray));
+
+});
+
+
+
+const render = () => {
   listArray.forEach((list) => {
     const li = document.createElement('li');
     li.innerHTML = `
   <div class="form">
    <input type="checkbox" name="list" id="list">
-    <p>${list.desc}</p>
+    <p>${list.name}</p>
     <i class="uil uil-ellipsis-v"></i>
   </div> `;
 
     container.appendChild(li);
   });
-});
+};
 
-// window.addEventListener('DOMContentLoaded', (e) => {
-//   console.log('it is loaded');
-// });
+
