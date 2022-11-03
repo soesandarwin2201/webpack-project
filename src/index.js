@@ -1,13 +1,50 @@
-import _ from 'lodash';
+// import _ from 'lodash';
 import './style.css';
 
-function component() {
- const element = document.createElement('div');
+const listArray = [
+  {
+    index: 1,
+    completed: false,
+    desc: 'Task Complete 1',
+  },
+  {
+    index: 2,
+    completed: false,
+    desc: 'Task Complete 2',
+  },
+  {
+    index: 3,
+    completed: false,
+    desc: 'Task Complete 3',
+  },
+  {
+    index: 4,
+    completed: false,
+    desc: 'Task Complete 4',
+  },
+  {
+    index: 5,
+    completed: false,
+    desc: 'Task Complete 5',
+  },
+];
 
- element.innerHTML = _.join(['Hello', 'webpack'], '');
-  element.classList.add('hello');
+const container = document.getElementById('container');
 
- return element;
-}
+window.addEventListener('DOMContentLoaded', () => {
+  listArray.forEach((list) => {
+    const li = document.createElement('li');
+    li.innerHTML = `
+  <div class="form">
+   <input type="checkbox" name="list" id="list">
+    <p>${list.desc}</p>
+    <i class="uil uil-ellipsis-v"></i>
+  </div> `;
 
-document.body.appendChild(component());
+    container.appendChild(li);
+  });
+});
+
+// window.addEventListener('DOMContentLoaded', (e) => {
+//   console.log('it is loaded');
+// });
