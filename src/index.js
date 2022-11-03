@@ -29,25 +29,24 @@ const listArray = [
   },
 ];
 
-const container = document.getElementById('to-do-list-container');
+const container = document.getElementById('container');
 
-// window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', () => {
 
-//  listArray.forEach((list) => {
-//    const li = document.createElement('li');
-//    li.innerHTML = `
-//   <div class="form">
-//    <input type="checkbox" name="list" id="list">
-//     <p>${list.desc}</p>
-//     <i class="uil uil-ellipsis-v"></i>
-//   </div> `;
+ listArray.forEach((list) => {
+   const li = document.createElement('li');
+   li.innerHTML = `
+  <div class="form">
+   <input type="checkbox" name="list" id="list">
+    <p>${list.desc}</p>
+    <i class="uil uil-ellipsis-v"></i>
+  </div> `;
 
-//    container.appendChild(li);
+   container.appendChild(li);
+ });
 
-//  });
-//  console.log(container);
-// });
-
-window.addEventListener('DOMContentLoaded', (e) => {
-  console.log(container);
 });
+
+// window.addEventListener('DOMContentLoaded', (e) => {
+//   console.log('it is loaded');
+// });

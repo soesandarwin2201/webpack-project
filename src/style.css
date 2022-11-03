@@ -6,6 +6,7 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
   outline: 0;
+  list-style: none;
 }
 
 body {
@@ -88,5 +89,12 @@ body {
 .clean-btn:hover {
   background-color: #cc9767;
   color: #fff;
+}
+
+.form {
+  display: flex;
+  justify-content: space-between;
+  margin-inline: 1rem;
+  margin-bottom: .5rem;
 }
 
