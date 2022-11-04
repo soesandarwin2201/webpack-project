@@ -1,14 +1,17 @@
 import './style.css';
-import { addList } from './add-remove.js';
+import { addList, trashIcon , deleteList , removeLocalStorage } from './add-remove.js';
+import { render , list } from './render.js';
 
-const LOCAL_STORAGE = 'task.listArray';
-const listArray = JSON.parse(localStorage.getItem(LOCAL_STORAGE)) || [] ;
+// const LOCAL_STORAGE = 'task.listArray';
+const listArray = JSON.parse(localStorage.getItem('listArray')) || [] ;
 
 
 
 const container = document.getElementById('container');
 const form = document.getElementById('form');
 const listInput = document.getElementById('list-input');
+// const list = document.getElementById('list');
+console.log(list);
 
 
 form.addEventListener('submit', (e) => {
@@ -24,26 +27,35 @@ form.addEventListener('submit', (e) => {
     listArray.push(list);
     render();
     listInput.value = null;
-    console.log(listArray);
+  
   }
-  localStorage.setItem(LOCAL_STORAGE, JSON.stringify(listArray));
+  localStorage.setItem('listArray', JSON.stringify(listArray));
 
 });
 
 
+window.addEventListener('DOMContentLoaded', render);
 
-const render = () => {
-  listArray.forEach((list) => {
-    const li = document.createElement('li');
-    li.innerHTML = `
-  <div class="form">
-   <input type="checkbox" name="list" id="list">
-    <p>${list.name}</p>
-    <i class="uil uil-ellipsis-v"></i>
-  </div> `;
+container.addEventListener('click', (e) => {
+  deleteList(e.target);
+  trashIcon(e.target);
+  removeLocalStorage(e.target.dataset.id)
+});
 
-    container.appendChild(li);
-  });
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
