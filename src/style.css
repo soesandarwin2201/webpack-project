@@ -98,3 +98,8 @@ body {
   margin-bottom: 0.5rem;
 }
 
+#input-class{
+  border: none;
+  outline: none;
+  background-color: #f5f5dd;
+}

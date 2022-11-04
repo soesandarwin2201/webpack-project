@@ -1,6 +1,6 @@
 import './style.css';
 import { addList, trashIcon , deleteList , removeLocalStorage } from './add-remove.js';
-import { render , list } from './render.js';
+import { render , editBtn } from './render.js';
 
 // const LOCAL_STORAGE = 'task.listArray';
 const listArray = JSON.parse(localStorage.getItem('listArray')) || [] ;
@@ -10,8 +10,10 @@ const listArray = JSON.parse(localStorage.getItem('listArray')) || [] ;
 const container = document.getElementById('container');
 const form = document.getElementById('form');
 const listInput = document.getElementById('list-input');
-// const list = document.getElementById('list');
-console.log(list);
+const alert  = document.getElementById('alert');
+
+
+
 
 
 form.addEventListener('submit', (e) => {
@@ -41,6 +43,9 @@ container.addEventListener('click', (e) => {
   trashIcon(e.target);
   removeLocalStorage(e.target.dataset.id)
 });
+
+
+
 
 
 
