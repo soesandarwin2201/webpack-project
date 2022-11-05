@@ -1,50 +1,60 @@
-// import _ from 'lodash';
 import './style.css';
+import ShowList from './function/displayList.js';
+import StoreLists from './function/localStorage.js';
 
-const listArray = [
-  {
-    index: 1,
-    completed: false,
-    desc: 'Task Complete 1',
-  },
-  {
-    index: 2,
-    completed: false,
-    desc: 'Task Complete 2',
-  },
-  {
-    index: 3,
-    completed: false,
-    desc: 'Task Complete 3',
-  },
-  {
-    index: 4,
-    completed: false,
-    desc: 'Task Complete 4',
-  },
-  {
-    index: 5,
-    completed: false,
-    desc: 'Task Complete 5',
-  },
-];
+window.addEventListener('DOMContentLoaded', ShowList.displayList);
 
-const container = document.getElementById('container');
+const form = document.getElementById('form');
+const listInput = document.getElementById('list-input');
+const cleanBtn = document.getElementById('clean-btn');
 
-window.addEventListener('DOMContentLoaded', () => {
-  listArray.forEach((list) => {
-    const li = document.createElement('li');
-    li.innerHTML = `
-  <div class="form">
-   <input type="checkbox" name="list" id="list">
-    <p>${list.desc}</p>
-    <i class="uil uil-ellipsis-v"></i>
-  </div> `;
+const messageContainer = document.getElementById('message-container');
 
-    container.appendChild(li);
-  });
+function alertMessage(type, message, time) {
+  const paragraph = document.createElement('p');
+  paragraph.classList.add('alert');
+  paragraph.innerHTML = `${message}`;
+  if (type === 'error') {
+    paragraph.classList.add('error');
+  } else if (type === 'success') {
+    paragraph.classList.add('success');
+  } else if (type === 'remove') {
+    paragraph.classList.add('remove');
+  }
+  messageContainer.appendChild(paragraph);
+  paragraph.classList.add('fadeout');
+  setTimeout(() => {
+    messageContainer.removeChild(paragraph);
+  }, time);
+}
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const inputClass = document.getElementById('list-input');
+
+  const name = inputClass.value;
+
+  if (name === null || name === ' ') {
+    alertMessage('error', '<b>Error: </b> Please fill the empty filed!', 4000);
+  } else {
+    const todoList = StoreLists.getList();
+    const name = listInput.value;
+    const complete = false;
+    const index = todoList.length + 1;
+    const id = Date.now().toString();
+    const todo = {
+      name, complete, id, index,
+    };
+    ShowList.addLists(todo);
+    StoreLists.addList(todo);
+    listInput.value = ' ';
+    alertMessage('success', '<b>Success:</b> List saved successfully', 4000);
+  }
 });
 
-// window.addEventListener('DOMContentLoaded', (e) => {
-//   console.log('it is loaded');
-// });
+cleanBtn.addEventListener('click', () => {
+  StoreLists.clearChecked();
+  document.querySelectorAll('.todo-item').forEach((node) => node.remove());
+  ShowList.displayList();
+  alertMessage('error', '<b>Error:</b> list removed successfully', 4000);
+});
