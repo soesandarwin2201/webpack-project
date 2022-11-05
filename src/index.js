@@ -1,6 +1,6 @@
 import './style.css';
 import { addList, trashIcon , deleteList , removeLocalStorage } from './add-remove.js';
-import { render , editBtn } from './render.js';
+import { render } from './render.js';
 
 // const LOCAL_STORAGE = 'task.listArray';
 const listArray = JSON.parse(localStorage.getItem('listArray')) || [] ;
