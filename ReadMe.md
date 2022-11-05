@@ -18,6 +18,9 @@
 
 To get a local copy up and running follow these simple example steps.
 
+## live version
+https://soesandarwin2201.github.io/soesandarwin220.github.io/
+
 ### Prerequisites
 - A simple web browser (preferably Chrome or Firefox)
 - An IDE
