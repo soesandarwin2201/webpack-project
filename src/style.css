@@ -154,3 +154,7 @@ body {
     opacity: 1;
   }
 }
+
+.line_through {
+  text-decoration-line: line-through;
+}

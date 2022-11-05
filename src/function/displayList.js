@@ -1,8 +1,6 @@
-import { completeStatus } from './complete.js';
 import StoreLists from './localStorage.js';
 
 const container = document.getElementById('container');
-
 
 export default class ShowList {
   static displayList() {
@@ -14,39 +12,40 @@ export default class ShowList {
 
   static addLists(list) {
     const checkedLists = list.complete ? 'checked' : '';
-    const checkInput = list.complete ? 'checked' : '';
     const div = document.createElement('div');
     div.classList.add('todo-item');
 
     div.innerHTML = `
-  <div>
-    <form action="" id="item" class="form">
+    <form action="" class="form">
     <input type="checkbox" class="check-btn" id="${list.id}" ${checkedLists}>
-      <input type="text" id="${list.id}" value="${list.name}" class="input-class" ${checkInput}>
-      <i class="uil uil-ellipsis-v delete" data-id="${list.id}" ></i>
-    </form>
-  </div>`.trim();
+    <input type="text" data-id="${list.id}" value="${
+  list.name
+}" class="input-class ${checkedLists ? 'line_through' : ''}">
+    <i class="uil uil-ellipsis-v delete" data-id="${list.id}" ></i>
+    </form>`;
 
+    const checkBtn = div.lastElementChild.querySelector('.check-btn');
+    const taskDescription = div.querySelector('.input-class');
+    const optionsIcon = div.querySelector('.delete');
 
-// const checkBtn = document.querySelectorAll('.check-btn');
-//     checkBtn.addEventListener('click', (e) => {
-//       const todoList = StoreLists.getList();
-//       const { id } = e.target;
-//       todoList.completeLists(id, e.target.checked);
-//       e.target.parentNode.lastElementChild.classList.toggle('checked');
-//       console.log('it is clicked');
-//     });
+    checkBtn.addEventListener('click', (e) => {
+      const todoList = StoreLists.getList();
+      StoreLists.completeLists(todoList, e.target.checked, e.target.id);
+      taskDescription.classList.toggle('line_through');
+    });
+
+    taskDescription.addEventListener('input', (ev) => {
+      const updatedDesc = ev.target.value;
+      StoreLists.editList(list.id, updatedDesc);
+    });
+
+    optionsIcon.addEventListener('click', () => {
+      div.remove();
+      StoreLists.removeLists(list.id);
+      //  alertMessage('error', '<b>Success:</b> list removed successfully', 4000);
+    });
 
     container.appendChild(div);
-
-
-}
-
-  static trashIcon(icon) {
-    if (icon.classList.contains('delete')) {
-      icon.classList.remove('uil-ellipsis-v');
-      icon.classList.add('uil-trash');
-    }
   }
 
   static deleteList(icon) {
@@ -55,23 +54,13 @@ export default class ShowList {
     }
   }
 
-  static checkedIcon(icon) {
-    icon.classList.toggle(checked);
-    icon.classList.toggle(uncheck);
-    icon.parentElement.querySelector('.input-class').classList.toggle(lineThrough);
-  }
-
   static clearLists() {
     const items = document.querySelectorAll('.todo-item');
-    console.log(items);
-    if(items.length > 0) {
+    if (items.length > 0) {
       items.forEach((item) => {
-         container.removeChild(item);
+        container.removeChild(item);
       });
     }
-    const todoList = StoreLists.getList();
     localStorage.removeItem('todoList');
-
   }
 }
-

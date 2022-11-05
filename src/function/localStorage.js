@@ -1,5 +1,5 @@
-import { update } from "lodash";
-import { completeStatus } from "./complete.js";
+import completeStatus from './complete.js';
+
 export default class StoreLists {
   static getList() {
     let todoList;
@@ -34,8 +34,13 @@ export default class StoreLists {
     localStorage.setItem('todoList', JSON.stringify(update));
   }
 
-  static completeLists(id,updated) {
+  static completeLists(todoList, isChecked, taskId) {
+    completeStatus(todoList, isChecked, taskId);
+  }
+
+  static clearChecked() {
     const todoList = StoreLists.getList();
-     completeStatus(todoList,id,updated);
-  } 
+    this.todoList = todoList.filter((list) => !list.complete);
+    localStorage.setItem('todoList', JSON.stringify(this.todoList));
+  }
 }

@@ -1,8 +1,6 @@
-const completeStatus = (todoList, id, updated) => {
-  const updatedStatus = todoList;
-  const selected = todoList.findIndex((el) => el.id === id);
-  updatedStatus[selected].complete = updated;
-  localStorage.setItem('todoList',JSON.stringify(updatedStatus));
+const completeStatus = (todoList, isChecked, taskId) => {
+  todoList.find((el) => parseInt(el.id, 10) === parseInt(taskId, 10)).complete = isChecked;
+  localStorage.setItem('todoList', JSON.stringify(todoList));
 };
 
-export { completeStatus };
+export default completeStatus;

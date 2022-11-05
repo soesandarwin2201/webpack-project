@@ -6,7 +6,6 @@ window.addEventListener('DOMContentLoaded', ShowList.displayList);
 
 const form = document.getElementById('form');
 const listInput = document.getElementById('list-input');
-const container = document.getElementById('container');
 const cleanBtn = document.getElementById('clean-btn');
 
 const messageContainer = document.getElementById('message-container');
@@ -53,24 +52,9 @@ form.addEventListener('submit', (e) => {
   }
 });
 
-container.addEventListener('click', (e) => {
-  ShowList.deleteList(e.target);
-  ShowList.trashIcon(e.target);
-  StoreLists.removeLists(e.target.dataset.id);
-  alertMessage('error', '<b>Success:</b> list removed successfully', 4000);
-});
-
-container.addEventListener('change', (e) => {
-  StoreLists.editList(e.target.id, e.target.value);
-});
-
-
-cleanBtn.addEventListener('click', (e) => {
-  ShowList.clearLists();
+cleanBtn.addEventListener('click', () => {
+  StoreLists.clearChecked();
+  document.querySelectorAll('.todo-item').forEach((node) => node.remove());
+  ShowList.displayList();
   alertMessage('error', '<b>Error:</b> list removed successfully', 4000);
 });
-
-
-
-
-
