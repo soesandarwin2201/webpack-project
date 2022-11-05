@@ -7,6 +7,7 @@ window.addEventListener('DOMContentLoaded', ShowList.displayList);
 const form = document.getElementById('form');
 const listInput = document.getElementById('list-input');
 const container = document.getElementById('container');
+const cleanBtn = document.getElementById('clean-btn');
 
 const messageContainer = document.getElementById('message-container');
 
@@ -62,3 +63,14 @@ container.addEventListener('click', (e) => {
 container.addEventListener('change', (e) => {
   StoreLists.editList(e.target.id, e.target.value);
 });
+
+
+cleanBtn.addEventListener('click', (e) => {
+  ShowList.clearLists();
+  alertMessage('error', '<b>Error:</b> list removed successfully', 4000);
+});
+
+
+
+
+
