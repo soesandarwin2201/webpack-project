@@ -2,7 +2,7 @@
 
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-> This is the simple to do list: using webpack that shows of my accomplishments as a software developer.
+> This is the simple to do list: using webpack that shows of my accomplishments as a software developer.In this project  we learn how to setup the webpack and nodemodules. This project do the to-do-list add , remove and edit function with local storage.
 
 
 
