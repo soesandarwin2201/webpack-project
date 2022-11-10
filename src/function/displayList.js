@@ -3,7 +3,7 @@ import StoreLists from './localStorage.js';
 
 
 export default class ShowList {
-  static displayList() {
+   displayList() {
     const todoList = StoreLists.getList();
     todoList.forEach((list) => {
       ShowList.addLists(list);
@@ -72,4 +72,3 @@ export default class ShowList {
   }
 }
 
-module.exports = ShowList ;

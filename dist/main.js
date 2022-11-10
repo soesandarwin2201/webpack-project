@@ -124,9 +124,9 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /*!*************************************!*\
   !*** ./src/function/displayList.js ***!
   \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ ShowList)\n/* harmony export */ });\n/* harmony import */ var _localStorage_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./localStorage.js */ \"./src/function/localStorage.js\");\n\r\n\r\nconst container = document.getElementById('container');\r\n\r\nclass ShowList {\r\n  static displayList() {\r\n    const todoList = _localStorage_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getList();\r\n    todoList.forEach((list) => {\r\n      ShowList.addLists(list);\r\n    });\r\n  }\r\n\r\n  static addLists(list) {\r\n    const checkedLists = list.complete ? 'checked' : '';\r\n    const div = document.createElement('div');\r\n    div.classList.add('todo-item');\r\n\r\n    div.innerHTML = `\r\n    <form action=\"\" class=\"form\">\r\n    <input type=\"checkbox\" class=\"check-btn\" id=\"${list.id}\" ${checkedLists}>\r\n    <input type=\"text\" data-id=\"${list.id}\" value=\"${\r\n  list.name\r\n}\" class=\"input-class ${checkedLists ? 'line_through' : ''}\">\r\n    <i class=\"uil uil-ellipsis-v delete\" data-id=\"${list.id}\" ></i>\r\n    </form>`;\r\n\r\n    const checkBtn = div.lastElementChild.querySelector('.check-btn');\r\n    const taskDescription = div.querySelector('.input-class');\r\n    const optionsIcon = div.querySelector('.delete');\r\n\r\n    checkBtn.addEventListener('click', (e) => {\r\n      const todoList = _localStorage_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getList();\r\n      _localStorage_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].completeLists(todoList, e.target.checked, e.target.id);\r\n      taskDescription.classList.toggle('line_through');\r\n    });\r\n\r\n    taskDescription.addEventListener('input', (ev) => {\r\n      const updatedDesc = ev.target.value;\r\n      _localStorage_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].editList(list.id, updatedDesc);\r\n    });\r\n\r\n    optionsIcon.addEventListener('click', () => {\r\n      div.remove();\r\n      _localStorage_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].removeLists(list.id);\r\n      //  alertMessage('error', '<b>Success:</b> list removed successfully', 4000);\r\n    });\r\n\r\n    container.appendChild(div);\r\n  }\r\n\r\n  static deleteList(icon) {\r\n    if (icon.classList.contains('uil-trash')) {\r\n      icon.parentElement.parentElement.remove();\r\n    }\r\n  }\r\n\r\n  static clearLists() {\r\n    const items = document.querySelectorAll('.todo-item');\r\n    if (items.length > 0) {\r\n      items.forEach((item) => {\r\n        container.removeChild(item);\r\n      });\r\n    }\r\n    localStorage.removeItem('todoList');\r\n  }\r\n}\r\n\n\n//# sourceURL=webpack://webpack-project/./src/function/displayList.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ ShowList)\n/* harmony export */ });\n/* harmony import */ var _localStorage_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./localStorage.js */ \"./src/function/localStorage.js\");\n/* module decorator */ module = __webpack_require__.hmd(module);\n\r\n\r\n\r\n\r\nclass ShowList {\r\n  static displayList() {\r\n    const todoList = _localStorage_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getList();\r\n    todoList.forEach((list) => {\r\n      ShowList.addLists(list);\r\n    });\r\n  }\r\n\r\n  static addLists(list) {\r\n    const container = document.getElementById('container');\r\n    const checkedLists = list.complete ? 'checked' : '';\r\n    const div = document.createElement('div');\r\n    div.classList.add('todo-item');\r\n\r\n    div.innerHTML = `\r\n    <form action=\"\" class=\"form\">\r\n    <input type=\"checkbox\" class=\"check-btn\" id=\"${list.id}\" ${checkedLists}>\r\n    <input type=\"text\" data-id=\"${list.id}\" value=\"${\r\n  list.name\r\n}\" class=\"input-class ${checkedLists ? 'line_through' : ''}\">\r\n    <i class=\"uil uil-ellipsis-v delete\" data-id=\"${list.id}\" ></i>\r\n    </form>`;\r\n\r\n    const checkBtn = div.lastElementChild.querySelector('.check-btn');\r\n    const taskDescription = div.querySelector('.input-class');\r\n    const optionsIcon = div.querySelector('.delete');\r\n\r\n    checkBtn.addEventListener('click', (e) => {\r\n      const todoList = _localStorage_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getList();\r\n      _localStorage_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].completeLists(todoList, e.target.checked, e.target.id);\r\n      taskDescription.classList.toggle('line_through');\r\n    });\r\n\r\n    taskDescription.addEventListener('input', (ev) => {\r\n      const updatedDesc = ev.target.value;\r\n      _localStorage_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].editList(list.id, updatedDesc);\r\n    });\r\n\r\n    optionsIcon.addEventListener('click', () => {\r\n      div.remove();\r\n      _localStorage_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].removeLists(list.id);\r\n      //  alertMessage('error', '<b>Success:</b> list removed successfully', 4000);\r\n    });\r\n\r\n    container.appendChild(div);\r\n  }\r\n\r\n  static deleteList(icon) {\r\n    if (icon.classList.contains('uil-trash')) {\r\n      icon.parentElement.parentElement.remove();\r\n    }\r\n  }\r\n\r\n  static clearLists() {\r\n    const container = document.getElementById('container');\r\n    const todoList = _localStorage_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getList();\r\n    const items = document.querySelectorAll('.todo-item');\r\n    if (items.length > 0) {\r\n      items.forEach((item) => {\r\n        container.removeChild(item);\r\n      });\r\n      todoList.forEach((list,index) => {\r\n        todoList.index = index + 1 ;\r\n      });\r\n    }\r\n\r\n    localStorage.removeItem('todoList');\r\n  }\r\n}\r\n\r\nmodule.exports = ShowList ;\n\n//# sourceURL=webpack://webpack-project/./src/function/displayList.js?");
 
 /***/ }),
 
@@ -134,9 +134,9 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /*!**************************************!*\
   !*** ./src/function/localStorage.js ***!
   \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ StoreLists)\n/* harmony export */ });\n/* harmony import */ var _complete_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./complete.js */ \"./src/function/complete.js\");\n\r\n\r\nclass StoreLists {\r\n  static getList() {\r\n    let todoList;\r\n    if (localStorage.getItem('todoList') === null) {\r\n      todoList = [];\r\n    } else {\r\n      todoList = JSON.parse(localStorage.getItem('todoList'));\r\n    }\r\n    return todoList;\r\n  }\r\n\r\n  static addList(list) {\r\n    const todoList = StoreLists.getList();\r\n    todoList.push(list);\r\n    localStorage.setItem('todoList', JSON.stringify(todoList));\r\n  }\r\n\r\n  static removeLists(id) {\r\n    let todoList = StoreLists.getList();\r\n    todoList = todoList.filter((list) => list.id !== id);\r\n    localStorage.setItem('todoList', JSON.stringify(todoList));\r\n  }\r\n\r\n  static editList(id, name) {\r\n    const todoList = StoreLists.getList();\r\n    const update = todoList.map((list) => {\r\n      if (list.id === id) {\r\n        return { ...list, name };\r\n      }\r\n      return list;\r\n    });\r\n    localStorage.setItem('todoList', JSON.stringify(update));\r\n  }\r\n\r\n  static completeLists(todoList, isChecked, taskId) {\r\n    (0,_complete_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(todoList, isChecked, taskId);\r\n  }\r\n\r\n  static clearChecked() {\r\n    const todoList = StoreLists.getList();\r\n    this.todoList = todoList.filter((list) => !list.complete);\r\n    localStorage.setItem('todoList', JSON.stringify(this.todoList));\r\n  }\r\n}\n\n//# sourceURL=webpack://webpack-project/./src/function/localStorage.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ StoreLists)\n/* harmony export */ });\n/* harmony import */ var _complete_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./complete.js */ \"./src/function/complete.js\");\n/* module decorator */ module = __webpack_require__.hmd(module);\n\r\n\r\nclass StoreLists {\r\n  static getList() {\r\n    let todoList;\r\n    if (localStorage.getItem('todoList') === null) {\r\n      todoList = [];\r\n    } else {\r\n      todoList = JSON.parse(localStorage.getItem('todoList'));\r\n    }\r\n    return todoList;\r\n  }\r\n\r\n  static addList(list) {\r\n    const todoList = StoreLists.getList();\r\n    todoList.push(list);\r\n    localStorage.setItem('todoList', JSON.stringify(todoList));\r\n  }\r\n\r\n  static removeLists(id) {\r\n    let todoList = StoreLists.getList();\r\n    todoList = todoList.filter((list) => list.id !== id);\r\n    localStorage.setItem('todoList', JSON.stringify(todoList));\r\n  }\r\n\r\n  static editList(id, name) {\r\n    const todoList = StoreLists.getList();\r\n    const update = todoList.map((list) => {\r\n      if (list.id === id) {\r\n        return { ...list, name };\r\n      }\r\n      return list;\r\n    });\r\n    localStorage.setItem('todoList', JSON.stringify(update));\r\n  }\r\n\r\n  static completeLists(todoList, isChecked, taskId) {\r\n    (0,_complete_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(todoList, isChecked, taskId);\r\n  }\r\n\r\n  static clearChecked() {\r\n    const todoList = StoreLists.getList();\r\n    this.todoList = todoList.filter((list) => !list.complete);\r\n    localStorage.setItem('todoList', JSON.stringify(this.todoList));\r\n  }\r\n}\r\n\r\nmodule.exports = StoreLists;\n\n//# sourceURL=webpack://webpack-project/./src/function/localStorage.js?");
 
 /***/ }),
 
@@ -165,12 +165,15 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sty
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
 /******/ 			id: moduleId,
-/******/ 			// no module.loaded needed
+/******/ 			loaded: false,
 /******/ 			exports: {}
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -198,6 +201,21 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sty
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/harmony module decorator */
+/******/ 	(() => {
+/******/ 		__webpack_require__.hmd = (module) => {
+/******/ 			module = Object.create(module);
+/******/ 			if (!module.children) module.children = [];
+/******/ 			Object.defineProperty(module, 'exports', {
+/******/ 				enumerable: true,
+/******/ 				set: () => {
+/******/ 					throw new Error('ES Modules may not assign module.exports or exports.*, Use ESM export syntax, instead: ' + module.id);
+/******/ 				}
+/******/ 			});
+/******/ 			return module;
 /******/ 		};
 /******/ 	})();
 /******/ 	
