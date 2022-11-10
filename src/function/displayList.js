@@ -1,11 +1,8 @@
 import StoreLists from './localStorage.js';
 
-
-
 export default class ShowList {
-   displayList() {
-    const todoList = StoreLists.getList();
-    todoList.forEach((list) => {
+  displayList() {
+    this.todoList.forEach((list) => {
       ShowList.addLists(list);
     });
   }
@@ -63,12 +60,11 @@ export default class ShowList {
       items.forEach((item) => {
         container.removeChild(item);
       });
-      todoList.forEach((list,index) => {
-        todoList.index = index + 1 ;
+      todoList.forEach((list, index) => {
+        todoList.index = index + 1;
       });
     }
 
     localStorage.removeItem('todoList');
   }
 }
-

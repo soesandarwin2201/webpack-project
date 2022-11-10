@@ -55,4 +55,3 @@ export default class StoreLists {
     localStorage.setItem('todoList', JSON.stringify(this.todoList));
   }
 }
-
