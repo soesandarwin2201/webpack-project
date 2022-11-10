@@ -1,6 +1,6 @@
 import StoreLists from './localStorage.js';
 
-const container = document.getElementById('container');
+
 
 export default class ShowList {
   static displayList() {
@@ -11,6 +11,7 @@ export default class ShowList {
   }
 
   static addLists(list) {
+    const container = document.getElementById('container');
     const checkedLists = list.complete ? 'checked' : '';
     const div = document.createElement('div');
     div.classList.add('todo-item');
@@ -55,12 +56,20 @@ export default class ShowList {
   }
 
   static clearLists() {
+    const container = document.getElementById('container');
+    const todoList = StoreLists.getList();
     const items = document.querySelectorAll('.todo-item');
     if (items.length > 0) {
       items.forEach((item) => {
         container.removeChild(item);
       });
+      todoList.forEach((list,index) => {
+        todoList.index = index + 1 ;
+      });
     }
+
     localStorage.removeItem('todoList');
   }
 }
+
+module.exports = ShowList ;
