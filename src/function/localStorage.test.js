@@ -37,6 +37,10 @@ describe('update task completed status', () => {
 describe('Deleteing task that are complete', () => {
   test('test for delete checked function', () => {
     localStorage.clear();
+    const testItem = new TestList(1, 1, 'drink', false);
+    StoreLists.addList(testItem);
+    const array = StoreLists.getList();
+    StoreLists.completeLists(array, true, array[0].id);
     StoreLists.clearChecked();
     expect(JSON.parse(localStorage.getItem('todoList')).length).toEqual(0);
   });
