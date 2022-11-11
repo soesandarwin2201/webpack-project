@@ -1,4 +1,4 @@
-import completeStatus  from './complete.js';
+import completeStatus from './complete.js';
 
 let todolist = [];
 export default class StoreLists {
@@ -47,10 +47,6 @@ export default class StoreLists {
 
   static completeLists(todoList, isChecked, taskId) {
     completeStatus(todoList, isChecked, taskId);
-  }
-
-  static completed(todoList, isChecked, taskid) {
-    complete(todolist, isChecked, taskid);
   }
 
   static clearChecked() {

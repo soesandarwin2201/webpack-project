@@ -1,7 +1,6 @@
 import StoreLists from './localStorage.js';
 import TestList from './testList.js';
 
-
 describe('should check the item is added', () => {
   test('should add to the list', () => {
     const test = new TestList(1, 1, 'sleep', false);
