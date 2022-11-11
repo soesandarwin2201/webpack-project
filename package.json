@@ -19,6 +19,9 @@
     "url": "https://github.com/soesandarwin2201/webpack-project/issues"
   },
   "homepage": "https://github.com/soesandarwin2201/webpack-project#readme",
+  "jest": {
+    "testEnvironment": "jsdom"
+  },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.19.6",
     "css-loader": "^6.7.1",
@@ -32,8 +35,6 @@
   },
   "dependencies": {
     "lodash": "^4.17.21"
-  },
-  "jest": {
-    "testEnvironment": "jsdom"
   }
+ 
 }

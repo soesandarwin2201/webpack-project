@@ -3,4 +3,9 @@ const completeStatus = (todoList, isChecked, taskId) => {
   localStorage.setItem('todoList', JSON.stringify(todoList));
 };
 
+const complete = (todolist,isChecked,taskid) => {
+  todolist.find((el) => parseInt(el.id, 10) === parseInt(taskid,10)).complete = isChecked;
+}
+
 export default completeStatus;
+export { complete };
