@@ -1,6 +1,5 @@
 import StoreLists from './localStorage.js';
 import TestList from './testList.js';
-import { completeStatus } from './complete.js';
 
 
 describe('should check the item is added', () => {
@@ -17,7 +16,6 @@ describe('should check the item is added', () => {
   });
 });
 
-
 describe('should edit to the input', () => {
   test('should edit the input', () => {
     const test = new TestList(3, 3, 'test', false);
@@ -29,10 +27,10 @@ describe('should edit to the input', () => {
 
 describe('update task completed status', () => {
   test('test should change completed  status', () => {
-    const testItem = new TestList(1 , 1 ,'drink', false);
+    const testItem = new TestList(1, 1, 'drink', false);
     StoreLists.addList(testItem);
     const array = StoreLists.getList();
-    StoreLists.completeLists(array,true,array[0].id);
+    StoreLists.completeLists(array, true, array[0].id);
     expect(JSON.parse(localStorage.getItem('todoList'))[0].completed).toBeTruthy();
   });
 });
@@ -44,8 +42,6 @@ describe('Deleteing task that are complete', () => {
     expect(JSON.parse(localStorage.getItem('todoList')).length).toEqual(0);
   });
 });
-
-
 
 describe('should delete from the array', () => {
   test('should delete from the list', () => {

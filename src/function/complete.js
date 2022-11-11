@@ -4,5 +4,3 @@ const completeStatus = (todoList, isChecked, taskId) => {
 };
 
 export default completeStatus;
-
-

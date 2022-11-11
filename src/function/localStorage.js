@@ -1,4 +1,4 @@
-import completeStatus, { complete } from './complete.js';
+import completeStatus  from './complete.js';
 
 let todolist = [];
 export default class StoreLists {
