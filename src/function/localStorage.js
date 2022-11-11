@@ -1,5 +1,4 @@
-import completeStatus from './complete.js';
-import { complete } from "./complete.js"
+import completeStatus, { complete } from './complete.js';
 
 let todolist = [];
 export default class StoreLists {
@@ -46,13 +45,12 @@ export default class StoreLists {
     localStorage.setItem('todoList', JSON.stringify(update));
   }
 
- 
   static completeLists(todoList, isChecked, taskId) {
     completeStatus(todoList, isChecked, taskId);
   }
 
-  static completed(todoList,isChecked,taskid) {
-    complete(todolist,isChecked,taskid);
+  static completed(todoList, isChecked, taskid) {
+    complete(todolist, isChecked, taskid);
   }
 
   static clearChecked() {
@@ -60,6 +58,4 @@ export default class StoreLists {
     this.todoList = todoList.filter((list) => !list.complete);
     localStorage.setItem('todoList', JSON.stringify(this.todoList));
   }
-
-
 }

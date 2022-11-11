@@ -26,7 +26,6 @@ describe('should check the item is added', () => {
 //   });
 // });
 
-
 describe('should edit to the input', () => {
   test('should edit the input', () => {
     const test = new TestList(3, 3, 'test', false);
@@ -36,7 +35,6 @@ describe('should edit to the input', () => {
   });
 });
 
-
 describe('update task completed status', () => {
   test('test should change completed  status', () => {
     const test = new TestList(2, 2, 'snack', true);
@@ -45,13 +43,9 @@ describe('update task completed status', () => {
   });
 });
 
-
 describe('Deleteing task that are complete', () => {
- test('test for delete checked function', () => {
-  StoreLists.clearChecked();
+  test('test for delete checked function', () => {
+    StoreLists.clearChecked();
     expect(JSON.parse(localStorage.getItem('todoList'))[0].completed).toBe(false);
- });
+  });
 });
-
-
-
