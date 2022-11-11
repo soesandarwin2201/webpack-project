@@ -1,5 +1,6 @@
 import StoreLists from './localStorage.js';
 import TestList from './testList.js';
+import { completeStatus } from './complete.js';
 
 describe('should check the item is added', () => {
   test('should add to the list', () => {
@@ -15,16 +16,6 @@ describe('should check the item is added', () => {
   });
 });
 
-// describe('should delete from the array', () => {
-//   test('should delete from the list', () => {
-//     StoreLists.remove(2);
-//     expect(StoreLists.remove(2)).toHaveLength(1);
-//   });
-//   test('should delete from the list', () => {
-//     StoreLists.remove(1);
-//     expect(StoreLists.remove(1)).toHaveLength(0);
-//   });
-// });
 
 describe('should edit to the input', () => {
   test('should edit the input', () => {
@@ -37,15 +28,31 @@ describe('should edit to the input', () => {
 
 describe('update task completed status', () => {
   test('test should change completed  status', () => {
-    const test = new TestList(2, 2, 'snack', true);
-    StoreLists.add(test);
-    expect(test.completed).toEqual(true);
+    const testItem = new TestList(1,1,'drink',false);
+    StoreLists.addList(testItem);
+    const array = localStorage.getItem('todoList');
+    completeStatus(array,true,array[0].id);
+    console.log(localStorage.getItem('todoList')[0]);
+    expect(JSON.parse(localStorage.getItem('todoList'))[0].completed).toBeTruthy();
   });
 });
 
-describe('Deleteing task that are complete', () => {
-  test('test for delete checked function', () => {
-    StoreLists.clearChecked();
-    expect(JSON.parse(localStorage.getItem('todoList'))[0].completed).toBe(false);
-  });
-});
+// describe('Deleteing task that are complete', () => {
+//   test('test for delete checked function', () => {
+//     StoreLists.clearChecked();
+//     expect(JSON.parse(localStorage.getItem('todoList'))[0].completed).toBe(false);
+//   });
+// });
+
+
+
+// describe('should delete from the array', () => {
+//   test('should delete from the list', () => {
+//     StoreLists.remove(2);
+//     expect(StoreLists.remove(2)).toHaveLength(1);
+//   });
+//   test('should delete from the list', () => {
+//     StoreLists.remove(1);
+//     expect(StoreLists.remove(1)).toHaveLength(0);
+//   });
+// });
