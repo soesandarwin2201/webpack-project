@@ -4,7 +4,7 @@ const completeStatus = (todoList, isChecked, taskId) => {
 };
 
 const complete = (todolist,isChecked,taskid) => {
-  todolist.find((el) => parseInt(el.id, 10) === parseInt(taskid,10)).complete = isChecked;
+  todolist.find((el) => parseInt(el.id, 10) === parseInt(taskid,10)).completed = isChecked;
 }
 
 export default completeStatus;

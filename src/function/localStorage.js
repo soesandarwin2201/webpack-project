@@ -46,17 +46,7 @@ export default class StoreLists {
     localStorage.setItem('todoList', JSON.stringify(update));
   }
 
-  static edit(id,name) {
-    const update = todolist.map((list) => {
-      if( list.id === id) {
-        return { ...list,name};
-      }
-     console.log('it is work');
-    });
-  }
-
-
-
+ 
   static completeLists(todoList, isChecked, taskId) {
     completeStatus(todoList, isChecked, taskId);
   }
@@ -71,7 +61,5 @@ export default class StoreLists {
     localStorage.setItem('todoList', JSON.stringify(this.todoList));
   }
 
-  static clear() {
 
-  }
 }

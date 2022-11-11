@@ -27,33 +27,31 @@ describe('should check the item is added', () => {
 // });
 
 
-describe('should edit to the input', () => {  
-  beforeEach(() => {
-    localStorage.clear();
+describe('should edit to the input', () => {
+  test('should edit the input', () => {
+    const test = new TestList(3, 3, 'test', false);
+    StoreLists.addList(test);
+    StoreLists.editList(3, 'meet');
+    expect(JSON.parse(localStorage.getItem('todoList'))[0].name).toBe('meet');
   });
- test('should edit the input', () => {
-   const test = new TestList(1,1,'test',false);
-  //  StoreLists.add(test);
-   StoreLists.edit(test.id,test.name);
-   expect(test).not.toBeNull();
-   expect(test.name).toBe('test');
- });
 });
 
 
-
 describe('update task completed status', () => {
-  beforeAll(() => {
-    localStorage.clear();
-  });
   test('test should change completed  status', () => {
-    const test = new TestList(2,2,'snack', true);
+    const test = new TestList(2, 2, 'snack', true);
     StoreLists.add(test);
     expect(test.completed).toEqual(true);
-
   });
-})
+});
 
+
+describe('Deleteing task that are complete', () => {
+ test('test for delete checked function', () => {
+  StoreLists.clearChecked();
+    expect(JSON.parse(localStorage.getItem('todoList'))[0].completed).toBe(false);
+ });
+});
 
 
 
