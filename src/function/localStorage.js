@@ -55,7 +55,7 @@ export default class StoreLists {
 
   static clearChecked() {
     const todoList = StoreLists.getList();
-    this.todoList = todoList.filter((list) => !list.complete);
+    this.todoList = todoList.filter((list) => !list.completed);
     localStorage.setItem('todoList', JSON.stringify(this.todoList));
   }
 }
