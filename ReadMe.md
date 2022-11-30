@@ -19,7 +19,7 @@
 To get a local copy up and running follow these simple example steps.
 
 ## live version
-https://soesandarwin2201.github.io/soesandarwin220.github.io/
+https://soesandarwin2201.github.io/webpack-project/dist/
 
 ### Prerequisites
 - A simple web browser (preferably Chrome or Firefox)
