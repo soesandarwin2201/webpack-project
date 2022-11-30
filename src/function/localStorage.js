@@ -1,5 +1,6 @@
 import completeStatus from './complete.js';
 
+let todolist = [];
 export default class StoreLists {
   static getList() {
     let todoList;
@@ -17,10 +18,20 @@ export default class StoreLists {
     localStorage.setItem('todoList', JSON.stringify(todoList));
   }
 
+  static add(list) {
+    todolist.push(list);
+    return todolist;
+  }
+
   static removeLists(id) {
     let todoList = StoreLists.getList();
     todoList = todoList.filter((list) => list.id !== id);
     localStorage.setItem('todoList', JSON.stringify(todoList));
+  }
+
+  static remove(id) {
+    todolist = todolist.filter((list) => list.id !== id);
+    return todolist;
   }
 
   static editList(id, name) {
@@ -40,7 +51,7 @@ export default class StoreLists {
 
   static clearChecked() {
     const todoList = StoreLists.getList();
-    this.todoList = todoList.filter((list) => !list.complete);
+    this.todoList = todoList.filter((list) => !list.completed);
     localStorage.setItem('todoList', JSON.stringify(this.todoList));
   }
 }
